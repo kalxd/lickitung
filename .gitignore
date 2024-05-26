@@ -1,2 +1,6 @@
 /node_modules/
 /dist/
+
+/config/*
+!/config/sample.json
+!/config/db.sql

@@ -1,0 +1,16 @@
+{
+	"name": "lickitung",
+	"engines": {
+		"node": ">= 20"
+	},
+	"dependencies": {
+		"@hono/node-server": "1.11.1",
+		"hono": "4.3.11",
+		"kysely": "0.27.3",
+		"pg": "8.11.5",
+		"zod": "3.23.8"
+	},
+	"devDependencies": {
+		"tsx": "4.11.0"
+	}
+}

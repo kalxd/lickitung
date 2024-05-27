@@ -1,6 +1,7 @@
 import { ZodType } from "zod";
 import { readFileSync, statSync } from "node:fs";
 import * as path from "node:path";
+import { configCodec } from "../interface/config";
 
 const curEnv = process.env.NODE_ENV ?? "development";
 
@@ -57,3 +58,5 @@ export const loadConfig = <T>(codec: ZodType<T>): T => {
 
 	return codec.parse(config);
 };
+
+export const config = loadConfig(configCodec);

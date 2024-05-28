@@ -2,8 +2,8 @@
 	"compilerOptions": {
 		"strict": true,
 		"target": "ESNext",
-		"module": "NodeNext",
-		"moduleResolution": "NodeNext",
+		"module": "commonjs",
+		"moduleResolution": "Node",
 		"outDir": "./dist",
 		"declaration": false
 	},

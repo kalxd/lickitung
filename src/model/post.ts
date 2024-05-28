@@ -5,5 +5,5 @@ export interface PostTable {
 	title: string;
 	content: string;
 	tags: Array<number> | null;
-	createAt: Date;
+	createAt: Generated<Date>;
 }

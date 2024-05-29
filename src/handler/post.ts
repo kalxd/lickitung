@@ -11,6 +11,11 @@ const createPost = z.object({
 	tags: z.number().array().optional()
 });
 
+app.get("/", c => db.selectFrom("post")
+	.selectAll()
+	.execute()
+	.then(a => c.json(a)));
+
 app.post(
 	"/",
 	zValidator("json", createPost),

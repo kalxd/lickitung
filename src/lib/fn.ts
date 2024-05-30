@@ -6,9 +6,6 @@ export const groupBy = <T, R>(f: (x: T) => R, xs: Array<T>): Array<Array<T>> => 
 	const [y, ...ys] = xs;
 	const index = ys.findIndex(item => f(item) !== f(y));
 
-	console.log(ys);
-	console.log(index);
-
 	if (index === -1) {
 		return [[y], ...groupBy(f, ys)];
 	}

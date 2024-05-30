@@ -32,6 +32,7 @@ app.get("/", c => db.selectFrom([
 	.leftJoin("tag", "tag.id", "t.id")
 	.selectAll("post")
 	.select(["tag.title as tagTitle", "tag.id as tagId"])
+	.where("tag.id", "is not", null)
 	.execute()
 	.then(xs => {
 		return groupBy(x => x.id, xs)

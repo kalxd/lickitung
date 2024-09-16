@@ -1,7 +1,9 @@
-import { Hono } from "hono";
+import { Env, Hono, Context } from "hono";
 import { z } from "zod";
 import { zValidator } from "@hono/zod-validator";
 import { db } from "../lib/db";
+import { reader, runReader } from "../lib/reader";
+import { BlankInput } from "hono/types";
 
 const app = new Hono;
 
@@ -28,8 +30,23 @@ app.post(
 	}
 );
 
-const f = {} as any;
+const getHandler = reader<Context<Env, any, BlankInput>, string | undefined>(helper => {
+	const ctx = helper.ask();
+	return ctx.req.header("Content-Type");
+});
 
-app.post("/test", f);
+const testHandler = reader<Context<Env, "/test", BlankInput>, string>(helper => {
+	const header = helper.bindFrom(getHandler);
+	if (!header) {
+		return "not founed";
+	}
+
+	return header;
+});
+
+app.post("/test", async ctx => {
+	const r = runReader(testHandler, ctx);
+	return ctx.json(r);
+});
 
 export default app;

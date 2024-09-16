@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import { logger } from "hono/logger";
 import { serve } from "@hono/node-server";
+import "./lib/reader";
 
 import post from "./handler/post";
 import tag from "./handler/tag";

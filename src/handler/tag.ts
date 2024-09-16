@@ -28,4 +28,8 @@ app.post(
 	}
 );
 
+const f = {} as any;
+
+app.post("/test", f);
+
 export default app;
